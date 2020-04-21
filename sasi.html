@@ -1,0 +1,31 @@
+<script src="lib/jquery.js" ></script>
+<input class="g" onkeyup="fun()" />
+<input class="g2" />
+
+<br>
+<div class="search-res" >
+
+</div>
+<script>
+function fun()
+    {
+             var se= $('.g').val();
+       $('.search-res').html('');
+       if(se !='')
+           {
+        $.post('sasi.php', {
+           
+             query:se }, function(JSONObject) {
+             console.log(JSONObject);
+             JSONObject=JSON.parse(JSONObject);
+           
+          
+                 for (var key in JSONObject) {
+        if (JSONObject.hasOwnProperty(key)) {
+         $('.search-res').append('<table onclick=$(".g2").val('+JSONObject[key]["nu"]+')    class="fnt2 srest"   ><tr><th style="width: 70vw;"  > <span class="fs12e" ><b>'+JSONObject[key]["na"]+'</b></span><br><span class="cogrey"  >'+JSONObject[key]["nu"]+'</span></th></tr></table>');
+        }}
+        });
+           }
+    }
+
+</script>
