@@ -8,7 +8,7 @@ if(isset($_POST['query']))
    $query = "
 	SELECT * FROM p 
 	WHERE na LIKE '%".$search."%'
-	LIMIT 20 "; 
+	LIMIT 5 "; 
      $results=mysqli_query($db,$query);
      $rows = array();
      while ($row = mysqli_fetch_assoc($results)) { 
