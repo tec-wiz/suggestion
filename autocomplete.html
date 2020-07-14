@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autocomplete</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+    <label for="tags">Languages name</label>
+    <input id="lan">
+    languages Id<input id="lan_id">
+
+<script>
+var local_source=[
+    {id:"3abc123",value:"a.k.s traders"  },
+    {id:"1abcwwqe",value:"java"  },
+    {id:"sasi123",value:"python"  },
+    {id:"loke123",value:"c"  },
+];
+
+$("#lan").autocomplete({
+    source: function (request,response){
+        response($.map(local_source,function(item){
+            return{
+                id:item.id,
+                value:item.value,
+            }
+        }))
+    },
+
+    select:function(event,ui){
+        $(this).val(ui.item.value)
+        $('#lan_id').val(ui.item.id);
+    },
+    minLength:0,
+    autoFocus:true,
+});
+
+</script>
+</body>
+</html>
+
+
+
+
